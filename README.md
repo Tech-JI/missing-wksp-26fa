@@ -1,16 +1,21 @@
 # Missing class before college
 
-Author: ZhaojiachengZhou
+This repo contains the materials for Missing Workshop 26FA, hosted by TechGC.
+
+Original Author: Zhaojiacheng Zhou
+Modified by: Zihan Ma
 
 ---
 
 ## Table of Content
 
-- TechJI introduction (3min)
-- Package manager for each platform
-- Vscode introduction
-- Basic concept of `shell` ()
+- TechGC introduction
+- Package managers
+- VS Code introduction
+- Shell basics
 - Markdown basics
+
+## Environment Setup
 
 ## Package manager for each platform (35min)
 
@@ -31,11 +36,6 @@ Author: ZhaojiachengZhou
 - Advertise for zsh :)
 - Basic bash command (10min)
 - File organization of linux (5min)
-
-## Vim! (5min)
-
-- What's vim and how to quit vim
-- Vim mode for bash
 
 ## Markdown basics (30min)
 
