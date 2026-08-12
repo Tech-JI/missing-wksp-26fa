@@ -218,11 +218,11 @@ Search for "Turn Windows features on or off" (启⽤或关闭Windows功能) in S
 
 Alternatively, if you failed to find "Turn Windows features on or off" in the Start Menu, go to "Control Panel" > "Programs" > "Turn Windows features on or off", and continue as stated above.
 
-#### Case 2.1 - No Hyper-V Settings
+#### Case 2.1: No Hyper-V Settings {#case-2-1}
 
 You should check whether your PC supports WSL 2. See the above section [Requirements (for WSL 2)](#requirements-for-wsl-2).
 
-#### Case 2.2 - Some of the settings can't be ticked
+#### Case 2.2: Some of the settings can't be ticked
 
 This might be an issue with your hardware. Please refer to section "How to Enable Hardware Virtualization in BIOS" in [this blog post](https://www.makeuseof.com/windows-11-enable-hyper-v/) and try to enable hardware virtualization.
 
@@ -307,7 +307,7 @@ wsl --set-default-version 2
 wsl --update
 ```
 
-- **Choice C:** Try [the solution to Case 2.1](#case-21-no-hyper-v-settings).
+- **Choice C:** Try [the solution to Case 2.1](#case-2-1).
 
 ### Case 6: Ubuntu files not found
 
