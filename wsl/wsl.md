@@ -7,9 +7,14 @@ urlcolor: linkblue
 linkcolor: linkblue
 header-includes:
   - \definecolor{linkblue}{HTML}{5693CA}
-  - \RedeclareSectionCommand[afterskip=1em,beforeskip=1em]{section}
+  - \RedeclareSectionCommand[afterskip=1.6em,beforeskip=1em]{section}
   - \RedeclareSectionCommand[afterskip=0.5em,beforeskip=0.5em]{subsection}
   - \RedeclareSectionCommand[afterskip=0.3em,beforeskip=0.3em]{subsubsection}
+  - \RedeclareSectionCommand[afterskip=0.3em,beforeskip=0.5em]{paragraph}
+  - \AtBeginDocument{\addtokomafont{section}{\huge}}
+  - \AtBeginDocument{\addtokomafont{subsection}{\Large}}
+  - \AtBeginDocument{\addtokomafont{subsubsection}{\large}}
+  - \AtBeginDocument{\addtokomafont{paragraph}{\normalsize}}
   - \AtBeginDocument{\captionsetup[figure]{justification=centering}}
   - \AtBeginDocument{\lstset{language={}}}
 ---
