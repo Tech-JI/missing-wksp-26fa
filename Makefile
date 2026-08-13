@@ -1,7 +1,10 @@
 build:
-	@pandoc -f markdown -t pdf wsl/wsl.md -o wsl/wsl.pdf --pdf-engine=xelatex -V mainfont="Noto Serif CJK SC"
+	@cd wsl && pandoc -f markdown -t pdf wsl.md -o wsl.pdf \
+		--pdf-engine=xelatex --template eisvogel --listings \
+		-V mainfont="Verdana" -V CJKmainfont="Maple Mono NF CN" -V monofont="JetBrainsMono NF"
+	@echo Build successful.
 
 .PHONY: build clean
 
 clean:
-	@rm wsl/wsl.pdf
+	@cd wsl && rm -f wsl.pdf
