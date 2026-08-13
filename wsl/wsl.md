@@ -2,7 +2,11 @@
 mainfont: Verdana
 CJKmainfont: Noto Sans CJK SC
 monofont: JetBrainsMono NF
+colorlinks: true
+urlcolor: linkblue
+linkcolor: linkblue
 header-includes:
+  - \definecolor{linkblue}{HTML}{5693CA}
   - \RedeclareSectionCommand[afterskip=1em,beforeskip=1em]{section}
   - \RedeclareSectionCommand[afterskip=0.5em,beforeskip=0.5em]{subsection}
   - \RedeclareSectionCommand[afterskip=0.3em,beforeskip=0.3em]{subsubsection}
@@ -192,7 +196,7 @@ If you have any problem during the above installation steps, firstly refer to th
 
 Go to [this mirror on SJTU Pan](https://pan.sjtu.edu.cn/web/share/6c95fbcb03dda858863ff7a64814844f) to download a patch and install it. Then start WSL again.
 
-Alternatively, go to the provided https://aka.ms/wsl2kernel link to download.
+Alternatively, go to the provided <https://aka.ms/wsl2kernel> link to download.
 
 ### Case 2: Error telling you Hyper-V is not enabled
 
