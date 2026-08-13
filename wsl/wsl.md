@@ -7,6 +7,7 @@ header-includes:
   - \RedeclareSectionCommand[afterskip=0.5em,beforeskip=0.5em]{subsection}
   - \RedeclareSectionCommand[afterskip=0.3em,beforeskip=0.3em]{subsubsection}
   - \AtBeginDocument{\captionsetup[figure]{justification=centering}}
+  - \AtBeginDocument{\lstset{language={}}}
 ---
 
 # WSL Install Guide
@@ -57,14 +58,14 @@ If you have some kind of way to access Microsoft Store or GitHub fast, then choo
 
 **TL;DR:** Install WSL 2 from Microsoft Store with Ubuntu is as simple as one command in your PowerShell (can be opened by searching \"Windows PowerShell\" in the Start Menu):
 
-```pwsh
+```pwsh {title="Windows PowerShell"}
 wsl --install
 ```
 ![*How to open PowerShell with administrative permission*](powershell.jpg){width=50%}
 
 Alternatively, install from GitHub:
 
-```pwsh
+```pwsh {title="Windows PowerShell"}
 wsl --install --web-download
 ```
 
@@ -72,13 +73,13 @@ wsl --install --web-download
 
 Run this to see all available distros:
 
-```pwsh
+```pwsh {title="Windows PowerShell"}
 wsl --list --online
 ```
 
 And install your favourite distro from Microsoft Store (replace `<distro>` with your preference, add `--web-download` if you prefer GitHub download):
 
-```pwsh
+```pwsh {title="Windows PowerShell"}
 wsl --install -d <distro> [--web-download]
 ```
 
@@ -100,7 +101,7 @@ Search in your Start Menu for \"Windows PowerShell\", and select \"Run as admini
 
 Paste this line into PowerShell and run it.
 
-```pwsh
+```pwsh {title="Windows PowerShell"}
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 ```
 
@@ -143,7 +144,7 @@ For Arch, when you boot into WSL for the first time, you should be straight in a
 
 1. Set a password for `root`. Note that the password you entered **will not be shown on screen**. Don\'t panic and type normally if you see nothing appears. **Make sure to keep this password in mind.**
 
-```bash
+```bash {title="WSL"}
 passwd
 ```
 
@@ -151,13 +152,13 @@ passwd
 
 2. Create a new user with admin privileges. Replace `<username>` with your preferred username. The username should **only contain lowercase letters and numbers**.
 
-```bash
+```bash {title="WSL"}
 useradd -m -G wheel <username>
 ```
 
 3. Set a password for your newly created user. Note that the password you entered **will not be shown on screen**. Don\'t panic and type normally if you see nothing appears. **Make sure to keep this password in mind as it will be used many times afterwards.**
 
-```bash
+```bash {title="WSL"}
 passwd <username>
 ```
 
@@ -165,19 +166,19 @@ passwd <username>
 
 4. Exit WSL.
 
-```bash
+```bash {title="WSL"}
 exit
 ```
 
 5. Shutdown WSL.
 
-```bash
+```pwsh {title="Windows PowerShell"}
 wsl --shutdown
 ```
 
 6. Change the default login user.
 
-```bash
+```pwsh {title="Windows PowerShell"}
 wsl --manage archlinux --set-default-user <username>
 ```
 
@@ -217,7 +218,7 @@ You can try one of the following fixes:
 
 - **Choice A:** Directly fix through `wsl` command.
 
-```bash
+```pwsh {title="Windows PowerShell"}
 wsl --update
 ```
 
@@ -225,7 +226,7 @@ wsl --update
 
 1. Disable WSL and Virtualization in PowerShell:
 
-```bash
+```pwsh {title="Windows PowerShell"}
 Disable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Windows-Subsystem-Linux" -NoRestart
 Disable-WindowsOptionalFeature -Online -FeatureName "VirtualMachinePlatform" -NoRestart
 ```
@@ -234,7 +235,7 @@ Disable-WindowsOptionalFeature -Online -FeatureName "VirtualMachinePlatform" -No
 
 2. Re-enable these two features:
 
-```bash
+```pwsh {title="Windows PowerShell"}
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 ```
@@ -247,13 +248,13 @@ Perform [the offline install \"Step 1\"](#step-1-run-wsl-installer) stated befor
 
 1. Remove the WSL AppxPackage:
 
-```bash
+```pwsh {title="Windows PowerShell"}
 Get-AppxPackage MicrosoftCorporationII.WindowsSubsystemforLinux -AllUsers | Remove-AppxPackage
 ```
 
 1. Reinstall WSL as AppxPackage through the `wsl` command:
 
-```bash
+```pwsh {title="Windows PowerShell"}
 wsl --update --web-download
 ```
 
@@ -261,7 +262,7 @@ wsl --update --web-download
 
 Run this command in PowerShell to disable \"Windows Hypervisor Platform\":
 
-```bash
+```pwsh {title="Windows PowerShell"}
 Disable-WindowsOptionalFeature -Online -FeatureName "HypervisorPlatform" -NoRestart
 ```
 
@@ -277,13 +278,13 @@ You could try one of the following fixes:
 
 - **Choice A:** Explicitly set the default version of WSL.
 
-```bash
+```pwsh {title="Windows PowerShell"}
 wsl --set-default-version 2
 ```
 
 - **Choice B:** Fix through `wsl` directly.
 
-```bash
+```pwsh {title="Windows PowerShell"}
 wsl --update
 ```
 
@@ -295,7 +296,7 @@ wsl --update
 
 This may be due to changes of the path of Ubuntu files. Try uninstall Ubuntu by:
 
-```bash
+```pwsh {title="Windows PowerShell"}
 wsl --unregister Ubuntu
 ```
 
@@ -305,7 +306,7 @@ And reinstall a distro by following the install instructions.
 
 Install `wsl` with `winget`:
 
-```bash
+```pwsh {title="Windows PowerShell"}
 winget install Microsoft.WSL
 ```
 
