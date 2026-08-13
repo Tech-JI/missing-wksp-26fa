@@ -1,3 +1,14 @@
+---
+mainfont: Verdana
+CJKmainfont: Noto Sans CJK SC
+monofont: JetBrainsMono NF
+header-includes:
+  - \RedeclareSectionCommand[afterskip=1em,beforeskip=1em]{section}
+  - \RedeclareSectionCommand[afterskip=0.5em,beforeskip=0.5em]{subsection}
+  - \RedeclareSectionCommand[afterskip=0.3em,beforeskip=0.3em]{subsubsection}
+  - \AtBeginDocument{\captionsetup[figure]{justification=centering}}
+---
+
 # WSL Install Guide
 
 > This document is adapted from the original version by the 20th TechGC department.
