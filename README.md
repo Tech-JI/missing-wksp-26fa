@@ -3,17 +3,38 @@
 This repo contains the materials for Missing Workshop 26FA, hosted by TechGC.
 
 Original Author: Zhaojiacheng Zhou
+
 Modified by: Zihan Ma
 
 ---
 
+## Build requirements
+
+### General requirements
+
+- GNU make
+- TeXLive (with `xelatex` and `latexmk`)
+- Python `pygments` (for `minted`)
+
+### Main (`src/main.pdf`)
+
+- Beamer theme `metropolis`
+- `minted` LaTeX package
+
+### WSL Install Doc (`wsl/wsl.pdf`)
+
+- pandoc (with xelatex engine)
+- eisvogel pandoc template
+- Fonts: Verdana, Noto Sans CJK SC, and JetBrainsMono NF
+
 ## Table of Content
 
-- TechGC introduction
+- TechJI introduction
 - Package managers
-- VS Code introduction
 - Shell basics
+- VS Code introduction
 - Markdown basics
+- Recommendation (search engines & AI)
 
 ## Environment Setup
 

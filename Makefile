@@ -1,4 +1,6 @@
 build:
+	@mkdir -p build
+	@latexmk -xelatex -outdir=build -out2dir=src src/main.tex
 	@cd wsl && pandoc -f markdown -t pdf wsl.md -o wsl.pdf \
 		--pdf-engine=xelatex --template eisvogel --listings
 	@echo Build successful.
