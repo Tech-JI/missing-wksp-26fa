@@ -25,6 +25,8 @@ Modified by: Zihan Ma
 
 - pandoc (with xelatex engine)
 - eisvogel pandoc template
+- `pandoc-latex-environment` filter (for admonition blocks)
+- `awesomebox` LaTeX package (for admonition blocks)
 - Fonts: Verdana, Noto Sans CJK SC, and JetBrainsMono NF
 
 ## Table of Content
