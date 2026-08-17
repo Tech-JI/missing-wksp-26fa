@@ -47,7 +47,7 @@ WSL is only an environment. You have to install a Linux distro (e.g. Ubuntu, Deb
 
 ### CPU Architecture
 
-Your computer definitely contains a CPU. Every CPU speaks a certain language called CPU architecture. The main architectures used in computers nowadays are **x64 (aka. amd64), arm64 (aka. aarch64), and RISC-V**. Every software you use needs to be translated to one of the CPU architectures to make your CPU understand what the software wants it to do, and these architectures are **not compatible with each other**. So before you download any software, make sure to check the CPU architecture or else the software won\'t work. Generally, there is a correspondence between the CPU designer and its architecture:
+Your computer\'s CPU speaks a certain language called CPU architecture. The main architectures nowadays are **x64 (aka. amd64), arm64 (aka. aarch64), and RISC-V**, and they are **not compatible with each other**, i.e. software built for one won\'t run on another. So before downloading any software, check your CPU architecture or it won\'t work. Generally, the CPU designer determines its architecture:
 
 - **Intel** and **AMD**: x64
 - **Apple**, **Snapdragon**, and **Huawei**: arm64
