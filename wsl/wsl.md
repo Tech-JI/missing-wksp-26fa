@@ -17,6 +17,13 @@ header-includes:
   - \AtBeginDocument{\addtokomafont{paragraph}{\normalsize}}
   - \AtBeginDocument{\captionsetup[figure]{justification=centering}}
   - \AtBeginDocument{\lstset{language={}}}
+  - \usepackage{awesomebox}
+pandoc-latex-environment:
+  noteblock: [note]
+  tipblock: [tip]
+  warningblock: [warning]
+  cautionblock: [caution]
+  importantblock: [important]
 ---
 
 # WSL Install Guide
@@ -100,7 +107,9 @@ If you don\'t have a steady connection to Microsoft Store or GitHub, then choose
 
 Download from [this mirror on SJTU Pan](https://pan.sjtu.edu.cn/web/share/a873a19ff4cb5903469942925769f286), and run this installer.
 
-**Note:** Only x64 versions are provided. If you have an arm-based Windows, go to [the official WSL release on GitHub](https://github.com/microsoft/WSL/releases/latest) to download an arm64 version.
+::: caution
+Only x64 versions are provided. If you have an arm-based Windows, go to [the official WSL release on GitHub](https://github.com/microsoft/WSL/releases/latest) to download an arm64 version.
+:::
 
 #### Step 2: Open PowerShell
 
@@ -124,17 +133,23 @@ Restart the system to apply the changes.
 
 Choose a distro from [this mirror folder on SJTU Pan](https://pan.sjtu.edu.cn/web/share/f0afe5d2cdc9c0a573c76f3ec3efe108), and run it by double clicking on the downloaded file.
 
-**Note:** You don\'t need to download all three files. Choosing one is enough.
+::: important
+You don\'t need to download all three files. Choosing one is enough.
+:::
 
-**Note:** Only x64 versions of Ubuntu, Debian, and Arch Linux are provided. If you want other distros, or you have an arm-based Windows, go to [this file on GitHub](https://github.com/microsoft/WSL/blob/master/distributions/DistributionInfo.json) to download the version of the distro you prefer.
+::: caution
+Only x64 versions of Ubuntu, Debian, and Arch Linux are provided. If you want other distros, or you have an arm-based Windows, go to [this file on GitHub](https://github.com/microsoft/WSL/blob/master/distributions/DistributionInfo.json) to download the version of the distro you prefer.
+:::
 
 ### Post-install Setup
 
 After you complete your installation, WSL should automatically run. If it doesn\'t, open PowerShell and type `wsl`.
 
-After booting into WSL, based on the distro you installed, you should perform different steps.
+After booting into WSL, based on the distro you installed, you should perform different steps. The number one principle is: **don\'t use `root` as your default user.**
 
-**Note:** Steps for only Ubuntu/Debian and Arch are shown here. If you installed a distro other than these three, refer to the documentation of your distro on your own. The number one principle is: **don\'t use `root` as your default user.**
+::: note
+Steps for only Ubuntu/Debian and Arch are shown here. If you installed a distro other than these three, refer to the documentation of your distro on your own.
+:::
 
 #### Ubuntu and Debian
 
