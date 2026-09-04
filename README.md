@@ -21,14 +21,6 @@ Modified by: Zihan Ma
 - Beamer theme `metropolis`
 - `minted` LaTeX package
 
-### WSL Install Doc (`wsl/wsl.pdf`)
-
-- pandoc (with xelatex engine)
-- eisvogel pandoc template
-- `pandoc-latex-environment` filter (for admonition blocks)
-- `awesomebox` LaTeX package (for admonition blocks)
-- Fonts: Verdana, Noto Sans CJK SC, and JetBrainsMono NF
-
 ## Table of Content
 
 - TechJI introduction
