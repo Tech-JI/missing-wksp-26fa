@@ -6,6 +6,8 @@ Original Author: Zhaojiacheng Zhou
 
 Modified by: Zihan Ma
 
+This branch (`Mac`) is the macOS-only deck. The cross-platform version (Windows/Linux + WSL guide) lives on branch `26fa-update`.
+
 ---
 
 ## Build requirements
@@ -26,18 +28,19 @@ Modified by: Zihan Ma
 - TechJI introduction
 - Package managers
 - Shell basics
+- macOS tips
 - VS Code introduction
 - Markdown basics
 - Recommendation (search engines & AI)
 
 ## Environment Setup
 
-## Package manager for each platform (35min)
+## Package manager on macOS (35min)
 
 - What's package manager (3min)
-- Introduction for winget and homebrew (linux user should know how to use package manager of their distro) (5min intro and 15 min for download homebrew)
+- Introduction for homebrew (5min intro and 15 min for download homebrew)
 - Change the source of package manager (2min)
-- Install neofetch(fastfetch?), vscode with package manager (5min)
+- Install fastfetch, vscode with package manager (5min)
 
 ## Vscode introduction (20min)
 
@@ -47,10 +50,15 @@ Modified by: Zihan Ma
 
 ## Basic concept of `shell` (20min)
 
-- What's shell (posh, bash, zsh) (5min)
+- What's shell (bash, zsh) (5min)
 - Advertise for zsh :)
-- Basic bash command (10min)
-- File organization of linux (5min)
+- Basic shell command (10min)
+- File organization of macOS (5min)
+
+## macOS tips (10min)
+
+- Keyboard basics and Finder vs Terminal
+- Node.js with nvm and CLI coding agents
 
 ## Markdown basics (30min)
 
