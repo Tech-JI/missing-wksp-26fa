@@ -24,6 +24,50 @@
 	\end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]{macOS Terminal}
+	\begin{itemize}
+		\item \textbf{Terminal.app}: ships with macOS — find it in Applications $\rightarrow$ Utilities
+		\item zsh is the default shell since Catalina (10.15), see ``Why zsh?'' above
+		\item \textbf{iTerm2}: popular alternative with split panes, profiles and a hotkey window
+		\item \textbf{oh-my-zsh}: plugin and theme manager for zsh, \href{https://ohmyz.sh}{ohmyz.sh}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{File organization in macOS}
+	\begin{center}
+	\begin{tikzpicture}[
+		grow=right,
+		level distance=3.2cm,
+		level 1/.style={sibling distance=1.05cm},
+		every node/.style={font=\small},
+		edge from parent/.style={draw, -latex}
+	]
+	\node {/}
+		child { node {/Applications} }
+		child { node {/Library} }
+		child { node {/System} }
+		child { node {/Users} }
+		child { node {/usr/local} }
+		child { node {/opt/homebrew} }
+		child { node {/Volumes} };
+	\end{tikzpicture}
+	\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{File organization in macOS}
+	\begin{itemize}
+		\item \textbf{/Applications}: GUI apps, each an app bundle
+		\item \textbf{/Library}: system-wide support files (fonts, frameworks)
+		\item \textbf{/System}: macOS system files, protected by SIP
+		\item \textbf{/Users/you}: your home — \textbf{~/Library} keeps per-user preferences and caches
+		\item \textbf{/usr/local}: Homebrew prefix on Intel Macs
+		\item \textbf{/opt/homebrew}: Homebrew prefix on Apple Silicon (see Package Manager)
+		\item \textbf{/Volumes}: external disks and mounted .dmg images
+	\end{itemize}
+
+	For more detailed information, check \href{https://developer.apple.com/library/archive/documentation/FileManagement/Conceptual/FileSystemProgrammingGuide/FileSystemOverview/FileSystemOverview.html}{Apple's File System documentation}
+\end{frame}
+
 \begin{frame}[fragile]{Basic bash commands}
 	\begin{itemize}
 		\item \textbf{pwd}: Print working directory - shows your current location in the file system
