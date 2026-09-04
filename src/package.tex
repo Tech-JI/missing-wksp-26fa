@@ -101,3 +101,66 @@ brew install --cask visual-studio-code
 	\end{minted}
 
 \end{frame}
+
+\begin{frame}[fragile]{Homebrew paths: Apple Silicon vs Intel}
+	\begin{itemize}
+		\item Apple Silicon (M-series) Macs install Homebrew to \textbf{/opt/homebrew}
+		\item Intel Macs install Homebrew to \textbf{/usr/local}
+		\item They never mix — check which one you have:
+	\end{itemize}
+
+	\begin{minted}{bash}
+uname -m        # arm64 -> Apple Silicon, x86_64 -> Intel
+brew --prefix   # prints your Homebrew prefix
+	\end{minted}
+
+	`brew shellenv` sets your PATH to the right prefix automatically
+\end{frame}
+
+\begin{frame}[fragile]{brew doctor}
+	\begin{itemize}
+		\item \textbf{brew doctor} checks your environment: PATH order, permissions, outdated configuration
+		\item Run it after installing Homebrew and whenever brew misbehaves
+		\item \textbf{brew config} prints your current setup (prefix, HOMEBREW\_* environment variables, mirror domains)
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Common formulae \& casks}
+	\begin{columns}[t]
+		\begin{column}{0.45\textwidth}
+			\textbf{Formulae} (CLI tools)
+			\begin{itemize}
+				\item git
+				\item node
+				\item wget
+				\item htop
+				\item fastfetch
+				\item tree
+				\item ripgrep
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.45\textwidth}
+			\textbf{Casks} (GUI apps)
+			\begin{itemize}
+				\item visual-studio-code
+				\item google-chrome
+				\item iterm2
+				\item iina
+				\item obsidian
+				\item docker
+			\end{itemize}
+		\end{column}
+	\end{columns}
+
+	Search with \texttt{brew search <name>}, info with \texttt{brew info <name>}
+\end{frame}
+
+\begin{frame}[fragile]{Mirror flow at a glance}
+	\begin{itemize}
+		\item Recap of the mirror setup from the exercises above
+		\item 4 env vars for the tsinghua mirror: \texttt{HOMEBREW\_BREW\_GIT\_REMOTE}, \texttt{HOMEBREW\_CORE\_GIT\_REMOTE}, \texttt{HOMEBREW\_API\_DOMAIN}, \texttt{HOMEBREW\_BOTTLE\_DOMAIN}
+		\item \texttt{HOMEBREW\_INSTALL\_FROM\_API=1}: fetch package info from the API instead of git
+		\item Re-point taps with \texttt{brew tap --custom-remote}, then \texttt{brew update}
+		\item Full guide: \href{https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/}{tsinghua homebrew mirror help}
+	\end{itemize}
+\end{frame}
