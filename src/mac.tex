@@ -1,0 +1,58 @@
+\section{macOS}
+
+\begin{frame}[fragile]{macOS keyboard basics}
+	\begin{itemize}
+		\item Windows \textbf{Ctrl} maps to macOS \textbf{Cmd} for common actions: \texttt{Cmd+C/V/X/Z/S} copy, paste, cut, undo, save
+		\item \textbf{Option} $\approx$ Windows \textbf{Alt}
+		\item \textbf{Control} still does terminal jobs: \texttt{Ctrl+C} interrupts, \texttt{Ctrl+D} ends input
+		\item Menu shortcuts are shown with \textbf{Command} ($\lrcorner$-like symbol), \textbf{Option}, \textbf{Control}, \textbf{Shift}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Finder vs Terminal}
+	\begin{itemize}
+		\item \textbf{Finder} is the GUI file manager — folders, files, drag and drop
+		\item \textbf{ls} $\approx$ seeing what a folder contains
+		\item \textbf{cd} $\approx$ entering a folder; \textbf{pwd} $\approx$ the path bar
+		\item \texttt{open .} opens the current directory in Finder
+		\item Drag a folder into a terminal window to insert its full path
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Terminal tricks}
+	\begin{itemize}
+		\item Right-click a folder in Finder $\rightarrow$ \textbf{New Terminal at Folder} (Services) to start a terminal right there
+		\item \texttt{open -a Safari} launches an app from the command line
+		\item \texttt{Cmd+K} clears the screen; \texttt{Tab} completes commands and paths
+		\item \texttt{history} shows what you typed; \texttt{Ctrl+R} searches it
+	\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Node.js and nvm}
+	\begin{itemize}
+		\item \textbf{nvm} = Node Version Manager: install and switch between Node.js versions
+		\item Better than installing one fixed \texttt{node} — projects often need different versions
+	\end{itemize}
+
+	\begin{minted}{bash}
+brew install nvm
+# then add the two lines brew prints to ~/.zshrc
+nvm install --lts
+nvm use --lts
+node -v && npm -v
+	\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{CLI coding agents}
+	\begin{itemize}
+		\item AI coding assistants that run right in your terminal
+	\end{itemize}
+
+	\begin{minted}{bash}
+npm install -g @anthropic-ai/claude-code   # Claude Code
+npm install -g @google/gemini-cli          # Gemini CLI
+npm install -g @qwen-code/qwen-code        # Qwen Code (needs Node 22+)
+	\end{minted}
+
+	Run them in your project folder and chat with your codebase
+\end{frame}
