@@ -261,7 +261,46 @@ Install `wsl` with `winget`:
 ```pwsh {title="Windows PowerShell"}
 winget install Microsoft.WSL
 ```
+#### Case 7.1: `wsl` command not found in Windows PowerShell (x86)
 
+If PowerShell reports that `wsl` is not recognized as a cmdlet, function, script file, or executable program, first check whether you opened **Windows PowerShell (x86)**.
+
+![*Example of `wsl` command not found in Windows PowerShell (x86)*](powershell-x86.png){width=70%}
+
+If the window title contains **`(x86)`**, you are running the 32-bit version of PowerShell. On a 64-bit Windows system, this may prevent PowerShell from finding the normal `wsl.exe`.
+
+Close the current window and open the normal **Windows PowerShell** (without `(x86)`) from the Start Menu, preferably using **Run as administrator**.
+
+Then check whether WSL is available:
+
+```pwsh {title="Windows PowerShell"}
+wsl --help
+wsl --status
+```
+#### Case 7.2: `wsl` command not found in Windows PowerShell
+
+If WSL has actually been removed or you want to reinstall it, open the normal **Windows PowerShell as administrator** and enable the required Windows features:
+
+```pwsh {title="Windows PowerShell"}
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+```
+
+Then **restart Windows**.
+
+After restarting, open the normal Windows PowerShell again and install Ubuntu:
+
+```pwsh {title="Windows PowerShell"}
+wsl --install -d Ubuntu
+```
+
+After installation, check the installed distributions with:
+
+```pwsh {title="Windows PowerShell"}
+wsl -l -v
+```
+
+If the installation succeeds, you should see Ubuntu listed and WSL version 2 enabled.
 ### None of these cases apply
 
 Search on Google or ask AI with the error message on your screen for help.
