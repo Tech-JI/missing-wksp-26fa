@@ -261,11 +261,10 @@ Install `wsl` with `winget`:
 ```pwsh {title="Windows PowerShell"}
 winget install Microsoft.WSL
 ```
+If PowerShell reports that `wsl` is not recognized as a cmdlet, function, script file, or executable program
+![*Example of `wsl` command not found in Windows PowerShell*](powershell.png){width=70%}
 #### Case 7.1: `wsl` command not found in Windows PowerShell (x86)
-
-If PowerShell reports that `wsl` is not recognized as a cmdlet, function, script file, or executable program, first check whether you opened **Windows PowerShell (x86)**.
-
-![*Example of `wsl` command not found in Windows PowerShell (x86)*](powershell-x86.png){width=70%}
+First check whether you opened **Windows PowerShell (x86)**.
 
 If the window title contains **`(x86)`**, you are running the 32-bit version of PowerShell. On a 64-bit Windows system, this may prevent PowerShell from finding the normal `wsl.exe`.
 
