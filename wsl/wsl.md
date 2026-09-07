@@ -79,24 +79,10 @@ wsl --install
 ```
 ![*How to open PowerShell with administrative permission*](powershell.jpg){width=50%}
 
-Alternatively, install from GitHub:
+Alternatively, install Ubuntu from Microsoft Store, or add `--web-download` to download it from an online source:
 
 ```pwsh {title="Windows PowerShell"}
-wsl --install --web-download
-```
-
-**If you would like more flexibility:**
-
-Run this to see all available distros:
-
-```pwsh {title="Windows PowerShell"}
-wsl --list --online
-```
-
-And install your favourite distro from Microsoft Store (replace `<distro>` with your preference, add `--web-download` if you prefer GitHub download):
-
-```pwsh {title="Windows PowerShell"}
-wsl --install -d <distro> [--web-download]
+wsl --install -d Ubuntu [--web-download]
 ```
 
 ### Offline Install
@@ -129,29 +115,17 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 
 Restart the system to apply the changes.
 
-#### Step 5: Install a distro
+#### Step 5: Install Ubuntu
 
-Choose a distro from [this mirror folder on SJTU Pan](https://pan.sjtu.edu.cn/web/share/f0afe5d2cdc9c0a573c76f3ec3efe108), and run it by double clicking on the downloaded file.
-
-::: important
-You don\'t need to download all three files. Choosing one is enough.
-:::
+Download [the x64 Ubuntu installer from SJTU Pan](https://pan.sjtu.edu.cn/web/share/22b7ce9a2236b3e3aea2437a293954b9), then run it by double clicking on the downloaded file.
 
 ::: caution
-Only x64 versions of Ubuntu, Debian, and Arch Linux are provided. If you want other distros, or you have an arm-based Windows, go to [this file on GitHub](https://github.com/microsoft/WSL/blob/master/distributions/DistributionInfo.json) to download the version of the distro you prefer.
+Only an x64 Ubuntu installer is provided. If you have an arm-based Windows, go to [the official WSL release on GitHub](https://github.com/microsoft/WSL/releases/latest) to download an arm64 version.
 :::
 
-### Post-install Setup
+### Post-install Setup and create an Ubuntu user
 
 After you complete your installation, WSL should automatically run. If it doesn\'t, open PowerShell and type `wsl`.
-
-After booting into WSL, based on the distro you installed, you should perform different steps. The number one principle is: **don\'t use `root` as your default user.**
-
-::: note
-Steps for only Ubuntu/Debian and Arch are shown here. If you installed a distro other than these three, refer to the documentation of your distro on your own.
-:::
-
-#### Ubuntu and Debian
 
 After you boot into WSL for the first time, the system would prompt you for a username and a password. Follow these steps:
 
@@ -161,52 +135,6 @@ After you boot into WSL for the first time, the system would prompt you for a us
 ![*The setup of a Linux user*](setup-unix-user.png){width=50%}
 
 After setting up the username and password, you are good to go. Type `exit` to exit WSL.
-
-#### Arch
-
-For Arch, when you boot into WSL for the first time, you should be straight in a window with `root@xxx` as a prefix. In this case, we will create an account other than `root` for login. **After you boot into WSL**, follow these steps:
-
-1. Set a password for `root`. Note that the password you entered **will not be shown on screen**. Don\'t panic and type normally if you see nothing appears. **Make sure to keep this password in mind.**
-
-```bash {title="WSL"}
-passwd
-```
-
-![*The successful result of `passwd`*](passwd-success.png){width=50%}
-
-2. Create a new user with admin privileges. Replace `<username>` with your preferred username. The username should **only contain lowercase letters and numbers**.
-
-```bash {title="WSL"}
-useradd -m -G wheel <username>
-```
-
-3. Set a password for your newly created user. Note that the password you entered **will not be shown on screen**. Don\'t panic and type normally if you see nothing appears. **Make sure to keep this password in mind as it will be used many times afterwards.**
-
-```bash {title="WSL"}
-passwd <username>
-```
-
-![*The successful result of `useradd`*](useradd-success.png){width=50%}
-
-4. Exit WSL.
-
-```bash {title="WSL"}
-exit
-```
-
-5. Shutdown WSL.
-
-```pwsh {title="Windows PowerShell"}
-wsl --shutdown
-```
-
-6. Change the default login user.
-
-```pwsh {title="Windows PowerShell"}
-wsl --manage archlinux --set-default-user <username>
-```
-
-After these steps, you are good to go.
 
 ## Troubleshooting
 
@@ -324,7 +252,7 @@ This may be due to changes of the path of Ubuntu files. Try uninstall Ubuntu by:
 wsl --unregister Ubuntu
 ```
 
-And reinstall a distro by following the install instructions.
+And reinstall Ubuntu by following the install instructions.
 
 ### Case 7: `wsl` command not found
 
