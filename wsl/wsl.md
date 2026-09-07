@@ -305,3 +305,226 @@ If the installation succeeds, you should see Ubuntu listed and WSL version 2 ena
 Search on Google or ask AI with the error message on your screen for help.
 
 If you are checking web resources, it is highly recommended to go to professional websites and forums like StackOverflow, Microsoft Doc, or GitHub issues.
+
+## VS Code Setup
+
+After setting up WSL, we recommend using **Visual Studio Code (VS Code)** as the editor for programming.
+
+In this workshop, **VS Code is installed on Windows**, while your source code, compiler, debugger, and other development tools run inside WSL.
+
+### Step 1: Install Visual Studio Code
+
+Open **Windows PowerShell** and run:
+
+```pwsh {title="Windows PowerShell"}
+winget install -e --id Microsoft.VisualStudioCode
+```
+
+Alternatively, you can download and install Visual Studio Code from its official website.
+
+After installation, close and reopen PowerShell.
+
+Check whether the `code` command is available:
+
+```pwsh {title="Windows PowerShell"}
+code --version
+```
+
+If a version number is displayed, VS Code has been installed successfully.
+
+::: note
+If PowerShell reports that `code` cannot be found immediately after installation, close all PowerShell windows and open PowerShell again.
+
+This allows Windows to reload the updated `PATH`.
+:::
+
+### Step 2: Install the WSL Extension
+
+Open Visual Studio Code.
+
+Go to the **Extensions** panel on the left sidebar, or press:
+
+```text
+Ctrl + Shift + X
+```
+
+Search for:
+
+```text
+WSL
+```
+
+Install the **WSL** extension provided by Microsoft.
+
+Alternatively, you can install it directly from Windows PowerShell:
+
+```pwsh {title="Windows PowerShell"}
+code --install-extension ms-vscode-remote.remote-wsl
+```
+
+The WSL extension allows the Windows version of VS Code to open folders, run terminals, and use development tools inside WSL.
+
+### Step 3: Install C/C++ Development Tools in WSL
+
+Enter WSL:
+
+```pwsh {title="Windows PowerShell"}
+wsl
+```
+
+You should now see a Linux prompt similar to:
+
+```text
+username@computer:~$
+```
+
+Update the package list:
+
+```bash {title="WSL"}
+sudo apt update
+```
+
+Then install the basic C/C++ development tools:
+
+```bash {title="WSL"}
+sudo apt install build-essential gdb
+```
+
+`build-essential` includes commonly used development tools such as:
+
+- `gcc` for compiling C programs
+- `g++` for compiling C++ programs
+- `make` for building projects
+
+`gdb` is the debugger that we will use later with VS Code.
+
+Check whether they are installed correctly:
+
+```bash {title="WSL"}
+gcc --version
+g++ --version
+gdb --version
+```
+
+If version information is displayed, the installation is successful.
+
+::: important
+In this workshop, GCC and GDB are installed **inside WSL**, not on Windows.
+
+:::
+
+### Step 4: Open a WSL Folder in VS Code
+
+We recommend storing Linux development projects inside your WSL home directory.
+
+Create a folder for your code:
+
+```bash {title="WSL"}
+mkdir -p ~/code
+cd ~/code
+```
+
+Open this folder with VS Code:
+
+```bash {title="WSL"}
+code .
+```
+
+The first time you run this command, VS Code may automatically install **VS Code Server** inside WSL. Wait for the installation to finish.
+
+A new VS Code window should open.
+
+Check the bottom-left corner of VS Code. You should see something similar to:
+
+```text
+WSL: Ubuntu
+```
+
+This means VS Code is now connected to your WSL environment.
+
+::: important
+Seeing `WSL: Ubuntu` in the bottom-left corner is important.
+
+It means that although the VS Code interface is running on Windows, commands such as `gcc`, `g++`, `gdb`, and the integrated terminal are running inside Ubuntu.
+:::
+
+### Step 5: Install the C/C++ Extension
+
+While VS Code is connected to WSL, open the **Extensions** panel:
+
+```text
+Ctrl + Shift + X
+```
+
+Search for:
+
+```text
+C/C++
+```
+
+Install **C/C++** provided by Microsoft.
+
+If VS Code asks whether to install the extension in Windows or WSL, make sure it is also installed in:
+
+```text
+WSL: Ubuntu
+```
+
+This extension provides features such as:
+
+- code completion
+- syntax checking
+- debugging
+- breakpoint support
+- integration with GDB
+
+### Step 6: Test the Environment
+
+Create a file named:
+
+```text
+hello.c
+```
+
+and write:
+
+```c
+#include <stdio.h>
+
+int main(void) {
+    printf("Hello, WSL!\n");
+    return 0;
+}
+```
+
+Open the integrated terminal in VS Code by pressing:
+
+```text
+Ctrl + `
+```
+
+The terminal prompt should look similar to:
+
+```text
+username@computer:~/code$
+```
+
+Compile the program:
+
+```bash
+gcc hello.c -o hello
+```
+
+Run it:
+
+```bash
+./hello
+```
+
+You should see:
+
+```text
+Hello, WSL!
+```
+
+Congratulations! You now have a working C/C++ development environment using **VS Code + WSL + GCC**.
