@@ -1,16 +1,44 @@
 # Missing class before college
 
-Author: ZhaojiachengZhou
+This repo contains the materials for Missing Workshop 26FA, hosted by TechGC.
+
+Original Author: Zhaojiacheng Zhou
+
+Modified by: Zihan Ma
 
 ---
 
+## Build requirements
+
+### General requirements
+
+- GNU make
+- TeXLive (with `xelatex` and `latexmk`)
+- Python `pygments` (for `minted`)
+
+### Main (`src/main.pdf`)
+
+- Beamer theme `metropolis`
+- `minted` LaTeX package
+
+### WSL Install Doc (`wsl/wsl.pdf`)
+
+- pandoc (with xelatex engine)
+- eisvogel pandoc template
+- `pandoc-latex-environment` filter (for admonition blocks)
+- `awesomebox` LaTeX package (for admonition blocks)
+- Fonts: Verdana, Noto Sans CJK SC, and JetBrainsMono NF
+
 ## Table of Content
 
-- TechJI introduction (3min)
-- Package manager for each platform
-- Vscode introduction
-- Basic concept of `shell` ()
+- TechJI introduction
+- Package managers
+- Shell basics
+- VS Code introduction
 - Markdown basics
+- Recommendation (search engines & AI)
+
+## Environment Setup
 
 ## Package manager for each platform (35min)
 
@@ -31,11 +59,6 @@ Author: ZhaojiachengZhou
 - Advertise for zsh :)
 - Basic bash command (10min)
 - File organization of linux (5min)
-
-## Vim! (5min)
-
-- What's vim and how to quit vim
-- Vim mode for bash
 
 ## Markdown basics (30min)
 

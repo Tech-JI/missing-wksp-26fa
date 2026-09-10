@@ -1,373 +1,269 @@
-# Wsl installation
+---
+mainfont: Verdana
+CJKmainfont: Noto Sans CJK SC
+monofont: JetBrainsMono NF
+colorlinks: true
+urlcolor: linkblue
+linkcolor: linkblue
+header-includes:
+  - \definecolor{linkblue}{HTML}{5693CA}
+  - \RedeclareSectionCommand[afterskip=1.6em,beforeskip=1em]{section}
+  - \RedeclareSectionCommand[afterskip=0.5em,beforeskip=0.5em]{subsection}
+  - \RedeclareSectionCommand[afterskip=0.3em,beforeskip=0.3em]{subsubsection}
+  - \RedeclareSectionCommand[afterskip=0.3em,beforeskip=0.5em]{paragraph}
+  - \AtBeginDocument{\addtokomafont{section}{\huge}}
+  - \AtBeginDocument{\addtokomafont{subsection}{\Large}}
+  - \AtBeginDocument{\addtokomafont{subsubsection}{\large}}
+  - \AtBeginDocument{\addtokomafont{paragraph}{\normalsize}}
+  - \AtBeginDocument{\captionsetup[figure]{justification=centering}}
+  - \AtBeginDocument{\lstset{language={}}}
+  - \usepackage{awesomebox}
+pandoc-latex-environment:
+  noteblock: [note]
+  tipblock: [tip]
+  warningblock: [warning]
+  cautionblock: [caution]
+  importantblock: [important]
+---
 
-_From 2023 VG151 teaching team, wr_
+# WSL Install Guide
 
-_Modified by zzjc, lsr_
+> This document is adapted from the original version by the 20th TechGC department.
+>
+> This document largely referred to [the official WSL installation documentation](https://learn.microsoft.com/en-us/windows/wsl/install) and [the manual installation documentation](https://learn.microsoft.com/en-us/windows/wsl/install-manual) provided by Microsoft.
+>
+> If you have any difficulty in reading this document in plain English, translate it using AI.
 
-## Windows (using wsl)
+In this document, we\'re gonna go through the steps for installing Windows Subsystem for Linux, version 2, i.e. WSL 2.
 
-### What/why
-In simple terms: WSL is a feature in Windows that lets you run a virtual machine for Linux directly on your Windows, as if you were on an Ubuntu, Debian, or other Linux computer. The greatest advantage is that it allows to run Linux and Windows **simultaneously**.
+## Preliminary Explanations
 
-**Why linux a better OS for development:** For developers, its powerful commandline interface, package managers (like apt), customizable environment are primary draws. It streamlines software installation, scripting, and automation. What's more, **JOJ** used in ENGR1010J/1510J is run within linux environment. So if you use Windows, you may encounter *"It works on my computer! Why can't it work in JOJ?"*
+### What is WSL
 
-**Notice:** wsl is only an environment, you have to install **one linux distro** (like ubuntu/debian/arch) along the way.
+WSL is a feature in Windows that lets you run a virtual machine for Linux directly on your Windows, as if you were on an Ubuntu, Debian, or other Linux computer. The greatest advantage is that it allows you to run Linux and Windows simultaneously.
 
-### Requirements(wsl2)
+### Why Linux is a better OS for development
 
-- If your computer uses windows 10:  
-   - For x64 systems: Version 1903 or later, with Build 18362.1049 or later.  
-   - For ARM64 systems: Version 2004 or later, with Build 19041 or later.  
-- All versions of Windows 11 support wsl2.
-- For Mac and Linux users, you don't need to install wsl.  
+For developers, its powerful commandline interface, package managers (like `apt`), customizable environment are primary draws. It streamlines software installation, scripting, and automation.
 
-**Update your windows if it doesn't match the requirements, or move on to wsl1 section to install wsl1 instead.**
+What\'s more, in ENGR1010J/1510J _Introduction to Computers & Programming_, JOJ (i.e. JOJ Online Judge) is used to test and grade your code, which is run within a Linux environment. So if you use Windows, you may encounter situations like: \"It works on my computer! Why can\'t it work in JOJ?\"
 
-**Notice:** VMware is not compatible with Hper-V in older versions. If you are already using VMare, check whether it meets the minimum requirements: Windows 10 20H1 build 19041.264 or later; VMware Workstation/Player 15.5.5 or later.  
-If not, please update / uninstall VMware and Windows / don't use wsl.  
+### Linux Distro
 
-### Best scenario
-run
-```powershell
-wsl.exe --install
+WSL is only an environment. You have to install a Linux distro (e.g. Ubuntu, Debian, Arch) as well. Linux is just a kernel, which serves as a base for operating systems. A Linux distro is an actual operating system based on the Linux kernel with the necessities you need for a working system.
+
+### CPU Architecture
+
+Your computer\'s CPU speaks a certain language called CPU architecture. The main architectures nowadays are **x64 (aka. amd64), arm64 (aka. aarch64), and RISC-V**, and they are **not compatible with each other**, i.e. software built for one won\'t run on another. So before downloading any software, check your CPU architecture or it won\'t work. Generally, the CPU designer determines its architecture:
+
+- **Intel** and **AMD**: x64
+- **Apple**, **Snapdragon**, and **Huawei**: arm64
+
+## Installation
+
+### Requirements (for WSL 2)
+
+- For Windows 10: (Check \"Settings\" > \"System\" > \"About\")
+  - For x64 systems: Version 1903 or later, with Build 18362.1049 or later.
+  - For arm64 systems: Version 2004 or later, with Build 19041 or later.
+- All versions of Windows 11 support WSL 2.
+
+### Online Install
+
+If you have some kind of way to access Microsoft Store or GitHub fast, then choose this method.
+
+**TL;DR:** Install WSL 2 from Microsoft Store with Ubuntu is as simple as one command in your PowerShell (can be opened by searching \"Windows PowerShell\" in the Start Menu):
+
+```pwsh {title="Windows PowerShell"}
+wsl --install
 ```
-If no error along the well and it's fast, then congratulations! You have wsl installed with ubuntu!  
-To install another distro, run
-```powershell
-wsl.exe --list --online
-```
-And choose the distro listed and replace \<distro> with it
-```powershell
-wsl.exe --install <Distro>
-```
-Then run to set the default distro for wsl
-```powershell
-wsl.exe --set-default <Distro>
+![*How to open PowerShell with administrative permission*](powershell.jpg){width=50%}
+
+Alternatively, install Ubuntu from Microsoft Store, or add `--web-download` to download it from an online source:
+
+```pwsh {title="Windows PowerShell"}
+wsl --install -d Ubuntu [--web-download]
 ```
 
-Now run to enter wsl
-```
-wsl
-```
-- If you are required to set user and password and no errors, then you are good to close this documentation!  
-- If you have no errors except that you are not required to set user and password, and when you run `wsl` you are faced with `root@xxx`, then go to `Reminder` section's Case 1.
-- If you have already faced issues during `wsl --install`, then please follow `Steps` section to follow commands step by step.  
-### Steps
+### Offline Install
 
-**There's an official tutorial:** https://learn.microsoft.com/en-us/windows/wsl/install-manual. But you can follow our guidance as well.  
+If you don\'t have a steady connection to Microsoft Store or GitHub, then choose this method.
 
-1. To enable Linux feature  
-run `Powershell` with **administrator**  
+#### Step 1: Run WSL installer
 
-![](./powershell.jpg)
+Download from [this mirror on SJTU Pan](https://pan.sjtu.edu.cn/web/share/a873a19ff4cb5903469942925769f286), and run this installer.
 
-Copy and paste the following command in Powershell and hit Enter:  
+::: caution
+Only x64 versions are provided. If you have an arm-based Windows, go to [the official WSL release on GitHub](https://github.com/microsoft/WSL/releases/latest) to download an arm64 version.
+:::
 
-```powershell
-dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-```
-```powershell
+#### Step 2: Open PowerShell
+
+Search in your Start Menu for \"Windows PowerShell\", and select \"Run as administrator\".
+
+#### Step 3: Enable virtualization feature
+
+Paste this line into PowerShell and run it.
+
+```pwsh {title="Windows PowerShell"}
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 ```
-**Make sure you type exactly the same.**    
 
-If you see this, then you are good to go.  
-![](./3.png)
+![*The successful result of DISM*](dism-complete.png){width=50%}
 
-2. Now **restart** your computer.  
+#### Step 4: Restart your computer
 
-3. Check again whether your PC support WSL2:
+Restart the system to apply the changes.
 
-   - In powershell run `systeminfo`
-   - Scroll down to Hyper-V section
-   - If there are 4 "Yes" OR " A hypervisor has been detected. Features required for Hyper-V will not be displayed." ("已检测到虚拟机监控程序。将不显示 Hyper-V 所需的功能。"), then your PC is OK
-   - Otherwise it's not OK, please use WSL1 or other vm platform
+#### Step 5: Install Ubuntu
 
-3. Setup wsl2
-```powershell
-wsl.exe --install
-```
-```powershell
-wsl --set-default-version 2
-```
+Download [the x64 Ubuntu installer from SJTU Pan](https://pan.sjtu.edu.cn/web/share/22b7ce9a2236b3e3aea2437a293954b9), then run it by double clicking on the downloaded file.
 
-![](./4.png)
+::: caution
+Only an x64 Ubuntu installer is provided. If you have an arm-based Windows, go to [the official WSL release on GitHub](https://github.com/microsoft/WSL/releases/latest) to download an arm64 version.
+:::
 
-### wsl1 installation
+### Post-install Setup and create an Ubuntu user
 
-**Notice: This is the fallback plan for failing to install wsl2. It's very recommended to try to install wsl2.**
+After you complete your installation, WSL should automatically run. If it doesn\'t, open PowerShell and type `wsl`.
 
-run `Powershell` with **administrator**  
+After you boot into WSL for the first time, the system would prompt you for a username and a password. Follow these steps:
 
-![](./powershell.jpg)
+1. Choose a username with **only lowercase letters and numbers**. The username does not need to be the same as your Windows username. Note that you can\'t use `root` as your username since it\'s reserved.
+2. Type in any password with at least 6 characters of your choice. The password does not need to be the same as your Windows login password. Note that the password you entered **will not be shown on screen**. Don\'t panic and type normally if you see nothing appears. **Make sure to keep this password in mind as it will be used many times afterwards.**
 
-Copy and paste the following command in Powershell and hit Enter:  
-```powershell
-dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-```
+![*The setup of a Linux user*](setup-unix-user.png){width=50%}
 
-Now you can move on to install a linux distro: ubuntu **or** debian **or** arch.  
+After setting up the username and password, you are good to go. Type `exit` to exit WSL.
 
-### Debug
+## Troubleshooting
 
-#### Case 1: No error
+If you have any problem during the above installation steps, firstly refer to this section for help. If none of these cases apply, reach to any one of our team for in-person assistance.
 
-- Go on and install linux distro in your wsl2.  
+### Case 1: Error with code 0x800701bc or Error with link \"https://aka.ms/wsl2kernel\" attatched
 
-#### Case 2: Error with link https://aka.ms/wsl2kernel attatched
+Go to [this mirror on SJTU Pan](https://pan.sjtu.edu.cn/web/share/6c95fbcb03dda858863ff7a64814844f) to download a patch and install it. Then start WSL again.
 
-- Go to https://aka.ms/wsl2kernel and download a patch
-- start wsl2 again
-- If network is slow, consider use winget to install wsl and turn on your proxy
+Alternatively, go to the provided <https://aka.ms/wsl2kernel> link to download.
 
-##### Case 2.1 Case 5: Error: 0x800701bc
-Go to following link for tutorial:  
-https://learn.microsoft.com/zh-cn/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package  
-The installaztion link:  
-https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
+### Case 2: Error telling you Hyper-V is not enabled
 
-#### Case 3: Error telling you Hyper-V is not enabled
+Search for \"Turn Windows features on or off\" (启用或关闭Windows功能) in Start Menu and open it. Find \"Hyper-V\" and tick all boxes. Then restart your PC and start WSL again.
 
-- Go to Control Panel (控制面板) > Programs (程序) > Turn Windows features on or off (启用或关闭Windows功能)
-- Find Hyper-V
+![*How to find \"Turn Windows feature on or off\"*](turn-windows-feature-on-or-off.png){width=50%}
 
-##### Case 3.1: No Hyper-V Settings
+Alternatively, if you failed to find \"Turn Windows features on or off\" in the Start Menu, go to \"Control Panel\" > \"Programs\" > \"Turn Windows features on or off\", and continue as stated above.
 
-- You should check whether your PC support WSL2. See above.
+#### Case 2.1: No Hyper-V Settings {#case-2-1}
 
-##### Case 3.2: All 4 settings in Hyper-V can be ticked
+You should check whether your PC supports WSL 2. See the above section [Requirements (for WSL 2)](#requirements-for-wsl-2).
 
-- Tick all settings
-- Restart your PC
-- Try to start wsl2 again
+#### Case 2.2: Some of the settings can\'t be ticked
 
-##### Case 3.3: Some of the settings can't be ticked
+This might be an issue with your hardware. Please refer to section \"How to Enable Hardware Virtualization in BIOS\" in [this blog post](https://www.makeuseof.com/windows-11-enable-hyper-v/) and try to enable hardware virtualization.
 
-This might be an issue with your hardware. Please refer to section "How to Enable Hardware Virtualization in BIOS" in https://www.makeuseof.com/windows-11-enable-hyper-v/ and try to enable hardware virtualization. (My laptop thinkpad has this issue)
+### Case 3: Error telling you \"Catastrophic failure\" (灾难性故障)
 
-#### Case 4: Catastrophic failure(灾难性故障)
-This error may due to corruptions during wsl installation. A reinstall may work.  
-You can try the following commands:  
+This error may be due to corruptions during wsl installation. A reinstall may work.
 
-1. 
-```powershell
+You can try one of the following fixes:
+
+- **Choice A:** Directly fix through `wsl` command.
+
+```pwsh {title="Windows PowerShell"}
 wsl --update
 ```
 
-2. 
-```powershell
+- **Choice B:** Disable and re-enable WSL.
+
+1. Disable WSL and Virtualization in PowerShell:
+
+```pwsh {title="Windows PowerShell"}
 Disable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Windows-Subsystem-Linux" -NoRestart
-```
-```powershell
 Disable-WindowsOptionalFeature -Online -FeatureName "VirtualMachinePlatform" -NoRestart
 ```
-**Restart your computer.**  
-Then run these two commands again:
-```powershell
+
+1. Restart your computer.
+
+2. Re-enable these two features:
+
+```pwsh {title="Windows PowerShell"}
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-```
-```powershell
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 ```
-3. go to https://pan.sjtu.edu.cn/web/share/bc19722cabba0d5bf35826eb9e1e1b8a and download wsl.2.6.1.0.x64.msi if your computer is x64, or wsl.2.6.1.0.arm64.msi if it's ARM.  
 
-4. 
-```powershell
+- **Choice C:** Fix through WSL installer.
+
+Perform [the offline install \"Step 1\"](#step-1-run-wsl-installer) stated before.
+
+- **Choice D:** Use Appx system to reinstall.
+
+1. Remove the WSL AppxPackage:
+
+```pwsh {title="Windows PowerShell"}
 Get-AppxPackage MicrosoftCorporationII.WindowsSubsystemforLinux -AllUsers | Remove-AppxPackage
 ```
-```powershell
+
+1. Reinstall WSL as AppxPackage through the `wsl` command:
+
+```pwsh {title="Windows PowerShell"}
 wsl --update --web-download
 ```
 
-#### Case 5: 0x80370114Error
-run  
-```
+### Case 4: Error with code 0x80370114
+
+Run this command in PowerShell to disable \"Windows Hypervisor Platform\":
+
+```pwsh {title="Windows PowerShell"}
 Disable-WindowsOptionalFeature -Online -FeatureName "HypervisorPlatform" -NoRestart
 ```
-or  
-Go to `Open or close Windows features`(启用或关闭Windows功能) and cancel Windows Hypervisor Platform(windows虚拟机监控程序平台).  
-**Then restart your computer.**
 
-#### Case 6: 0x8007019eError
-You could try the following command:  
-1. 
-```
+Then restart your computer.
+
+Alternatively, go to \"Turn Windows features on or off\" (启用或关闭 Windows 功能) and unselect \"Windows Hypervisor Platform\" (Windows 虚拟机监控程序平台). Then restart your computer.
+
+![*Diagram of what to turn on and off*](windows-features.png){width=50%}
+
+### Case 5: Error with code 0x8007019e
+
+You could try one of the following fixes:
+
+- **Choice A:** Explicitly set the default version of WSL.
+
+```pwsh {title="Windows PowerShell"}
 wsl --set-default-version 2
 ```
-2. 
-```
+
+- **Choice B:** Fix through `wsl` directly.
+
+```pwsh {title="Windows PowerShell"}
 wsl --update
 ```
 
-3. try the solution of Case 2.1.  
-#### Case 7: ubuntu files not found
-![](./ubuntu_notfound.png)
-This may due to changes of the path of ubuntu files. Try:  
-```
+- **Choice C:** Try [the solution to Case 2.1](#case-2-1).
+
+### Case 6: Ubuntu files not found
+
+![*Symptom of the Ubuntu files not found problem*](ubuntu-file-not-found.png){width=50%}
+
+This may be due to changes of the path of Ubuntu files. Try uninstall Ubuntu by:
+
+```pwsh {title="Windows PowerShell"}
 wsl --unregister Ubuntu
 ```
-And reinstall ubuntu.  
 
-#### Case 8: wsl command not found
-Install wsl with winget:
-```
+And reinstall Ubuntu by following the install instructions.
+
+### Case 7: `wsl` command not found
+
+Install `wsl` with `winget`:
+
+```pwsh {title="Windows PowerShell"}
 winget install Microsoft.WSL
 ```
 
-#### Otherwise
+### None of these cases apply
 
-- Search online with error message on your screen (better go to stackoverflow/microsoft doc/github issues)
-- Just use WSL1. It has no big issue.
+Search on Google or ask AI with the error message on your screen for help.
 
-### Download Linux Distro
-
-Install Linux (Ubuntu/Debian/arch, you **only** need choose **one**)
-
-
-#### Jbox
-
-I download latest ubuntu, debian and arch packages from ms official website, you can download **one of them**. If you use ubuntu and debian, just click the file and everything will be done automatically. If you use arch, you need to run `wsl --install --from-file <file-path>`. By arch wiki simply run ` wsl --install archlinux` is fine, but it is not tested by us.  
-链接: https://pan.sjtu.edu.cn/web/share/998f65b3a2da2ba1b0a3251c57e8b815, 提取码: 8kk6  
-sample code(**Arch**)
-```powershell
-wsl --import Arch "$env:LOCALAPPDATA\wsl\Arch" ".\Downloads\archlinux.wsl" --version 2
-```
-#### Microsoft Store(slow and instable)
-You could also download them in Microsoft Store(**no need if you successfully install them from Jbox**) but it is not recommended as it may be slow.  
-Take installing Ubuntu as an example:  
-Go to Microsoft Store and search "Ubuntu"
-
-![](./ubuntu_ms.png)
-
-Download one of them. Recommend:24.04.    
-*Hint: if it's slow, please download it from Jbox.*
-
-
-#### Ubuntu
-Ubuntu is a linux distro which is widely used and simple for beginners.  
-
-Then click on `open` in microsoft store or double click the file downloaded from jbox.  
-
-Setup your user name and password. **The password will not be shown in the terminal when you type in.**
-![](./7.png)
-
-run the following commands to install essen tial packages. 
-```bash
-$ sudo apt update
-$ sudo apt install build-essential
-$ gcc --version
-```
-![](./8.png)
-
-
-#### Debian
-the steps are exactly the same as ubuntu.
-
-#### Arch
-
-You may refer to the official website.
-
-Here, we demonstrate the first method.
-
-1. [Download](https://github.com/yuk7/ArchWSL/releases/latest) the installer zip.
-
-![](./9.png)
-*Hint: if it's slow, please go to`JBox` section and download Arch there.*
-
-2. Extract all files in zip file to the same directory. Please extract to a folder that you have write permission. For example, `C:\Program Files` cannot be used since the rootfs cannot be modified there.
-
-![](./10.png)
-
-3. Run `Arch.exe` to extract the rootfs and register to WSL
-
-![](./11.png)
-
-As a side note, the executable name is what is used as the WSL instance name. If you rename it, you can have multiple installs.
-
-4. Open your terminal and choose `arch`.
-
-![](./12.png)
-
-5. Setting the root password
-
-```bash
-passwd
-```
-
-![](./13.png)
-
-6. Set up the default user
-
-```bash
-$ echo "%wheel ALL=(ALL) ALL" > /etc/sudoers.d/wheel
-$ useradd -m -G wheel -s /bin/bash {username}
-$ passwd {username}
-```
-
-![](./14.png)
-
-```bash
-$ exit
-$ Arch.exe config --default-user {username}
-```
-
-![](./15.png)
-
-If the default user has not been changed ([issue #7](https://github.com/yuk7/ArchWSL/issues/7)), please reboot the computer or alternatively, restart the LxssManager in an Admin command prompt. _Please refer to the official documentation._
-
-7.  initialize the keyring
-
-```bash
-$ sudo pacman-key --init
-$ sudo pacman-key --populate
-$ sudo pacman -Sy archlinux-keyring
-$ sudo pacman -Su
-```
-
-![](./16.png)
-
-8. Install gcc
-
-```bash
-$ sudo pacman -S gcc
-```
-
-![](./17.png)
-
-9. test gcc
-
-```bash
-$ gcc --version
-```
-
-![](./18.png)
-
-
-### Reminder:
-If you face issues when installing arch, please search online or just switch to ubuntu/debian.  
-
-### Reminder  
-
-#### Case 1: No username and password required
-
-In this case, you may see something like `root@xxx` in the terminal, which means you are logging in as a root user(superuser). You need to set up a normal user with sudo right with following commands:  
-```bash
-$ adduser <username>
-$ usermod -aG sudo <username>
-$ exit
-```
-After exiting wsl, run
-```powershell
-wsl --manage <distro> --set-default-user <username>
-```
-change \<distro> to ubuntu-24.04 if you installed ubuntu. or type `wsl --list` to see the distro name you installed and replace it.  
-seeing `<username>@xxx:~$` everytime you enter wsl means it's successful.  
-
-
-### Usage
-
-Open `Powershell` or `cmd`, type:  
-```powershell
-wsl
-```
-Then you will enter the linux environment in the terminal(wsl will choose the default linux distro). Now go on and code!  
+If you are checking web resources, it is highly recommended to go to professional websites and forums like StackOverflow, Microsoft Doc, or GitHub issues.
