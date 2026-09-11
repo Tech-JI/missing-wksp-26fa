@@ -26,7 +26,7 @@ pandoc-latex-environment:
   importantblock: [important]
 ---
 
-# WSL Install Guide
+# WSL&Vscode Install Guide
 
 > This document is adapted from the original version by the 20th TechGC department.
 >
@@ -570,3 +570,6 @@ Hello, C!
 ```
 
 Congratulations! You now have a working C/C++ development environment using **VS Code + WSL + GCC**.
+
+## Future Development
+If you want to learn more about how to code in vscode and writing markdown files, please look forward to our Vscode and Markdown Workshops held bu Tech-GC~
