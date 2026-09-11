@@ -262,9 +262,11 @@ Install `wsl` with `winget`:
 winget install Microsoft.WSL
 ```
 If PowerShell reports that `wsl` is not recognized as a cmdlet, function, script file, or executable program
-![*Example of `wsl` command not found in Windows PowerShell*](powershell.png){width=70%}
+
+![Trouble with wsl_x86](wsl_x86.png)
 #### Case 7.1: `wsl` command not found in Windows PowerShell (x86)
 First check whether you opened **Windows PowerShell (x86)**.
+
 
 If the window title contains **`(x86)`**, you are running the 32-bit version of PowerShell. On a 64-bit Windows system, this may prevent PowerShell from finding the normal `wsl.exe`.
 
@@ -301,6 +303,8 @@ wsl -l -v
 
 If the installation succeeds, you should see Ubuntu listed and WSL version 2 enabled.
 ### None of these cases apply
+
+See troubleshooting.md for further information.
 
 Search on Google or ask AI with the error message on your screen for help.
 
@@ -464,6 +468,8 @@ C/C++
 
 Install **C/C++** provided by Microsoft.
 
+![Install C/C++](install_c.png)
+
 If VS Code asks whether to install the extension in Windows or WSL, make sure it is also installed in:
 
 ```text
@@ -492,7 +498,7 @@ and write:
 #include <stdio.h>
 
 int main(void) {
-    printf("Hello, WSL!\n");
+    printf("Hello, C!\n");
     return 0;
 }
 ```
@@ -509,11 +515,27 @@ The terminal prompt should look similar to:
 username@computer:~/code$
 ```
 
+![terminal_c](terminal_c.png)
+
 Compile the program:
 
 ```bash
 gcc hello.c -o hello
 ```
+
+This command uses **GCC (GNU Compiler Collection)** to compile the C source file into an executable program.
+
+The command can be understood as:
+
+```text
+gcc hello.c -o hello
+│   │       │  │
+│   │       │  └── Output file name
+│   │       └───── -o means "output"
+│   └───────────── Input C source file
+└───────────────── GCC compiler
+```
+
 
 Run it:
 
@@ -521,10 +543,30 @@ Run it:
 ./hello
 ```
 
-You should see:
+You should sHere:
 
 ```text
-Hello, WSL!
+.
+```
+
+means the current directory that **hello.c** is put in.
+
+Therefore:
+
+```bash
+./hello
+```
+
+means:
+
+Run the executable file named `hello` located in the current directory.
+
+Linux then loads the program into memory and starts executing it from the `main()` function.
+
+If you see output like:
+
+```text
+Hello, C!
 ```
 
 Congratulations! You now have a working C/C++ development environment using **VS Code + WSL + GCC**.
