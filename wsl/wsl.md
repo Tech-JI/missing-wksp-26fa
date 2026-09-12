@@ -34,9 +34,51 @@ pandoc-latex-environment:
 >
 > If you have any difficulty in reading this document in plain English, translate it using AI.
 
+## Technical Department
+
+The **Technical Department** is a **hands-on technical practice platform** where students can explore, learn, and build. We are committed to helping students develop practical skills in engineering and information technology.
+
+New to technology? **No worries!** Here, you can learn fundamental concepts while also developing practical skills through real projects.
+
+The department follows a **flexible division of work** and currently includes several functional groups, such as **Workshop Outreach**, **Technical Maintenance**, **Project Development**, and **Publicity**. Members are free to choose the areas that best match their **interests**.
+
+- In the **Workshop Outreach** group, we regularly organize a variety of **workshops**, including topics such as **Linux Install Party**, **Git**, **Bash**, These workshops are designed to support students in learning useful technical skills. They are not only opportunities to learn, but also spaces to meet like-minded students and explore technology together.
+
+- The **Technical Maintenance** group is responsible for keeping existing projects, tools, and services running smoothly and up to date. The website you are currently viewing is also maintained and operated by the Technical Department. Through this work, members can gain solid hands-on experience and improve their problem-solving skills.
+
+- In the **Project Development** group, you will have opportunities to participate in the design and development of new ideas and projects. Previous projects include the **VS Code JOJ Extension** and the **Prom Mini Program**. Current projects include a **Course Review Community** and a **PDF Translation Tool**. Future plans include projects such as an **Event Calendar** and a **Canvas Desktop Client**. This is a great place to turn ideas into real products and technical skills into meaningful impact.
+
+- The **Publicity** group is mainly responsible for Technical Department posts on the **GC Blue Tiger** official account. Members work on content planning, layout design, and copywriting, helping share our technical projects and highlights from workshops with a wider audience. It is also a great opportunity to develop communication, design, teamwork, and content creation skills.
+
+Whether you want to strengthen your technical skills through **coding, hardware, or project development**, or you are interested in **content creation, design, and official account operations**, you can find a place for yourself in the **Technical Department**.
+
+Here, you will find diverse opportunities, hands-on experience, and teammates who are ready to learn and grow together.
+
 In this document, we\'re gonna go through the steps for installing Windows Subsystem for Linux, version 2, i.e. WSL 2.
 
 ## Preliminary Explanations
+
+### What is a CLI?
+
+**CLI** stands for **Command-Line Interface**.
+
+A CLI is a way to interact with your computer by **typing commands** instead of clicking buttons and menus.
+
+For example, in a graphical user interface (**GUI**), you may open a folder by clicking it with your mouse.
+
+In a CLI, you can achieve the same kind of task by typing a command.
+
+For example, in Windows PowerShell:
+
+```pwsh {title="Windows PowerShell"}
+wsl --status
+```
+or inside Ubuntu / WSL:
+```pwsh {title="WSL"}
+sudo apt update
+```
+![*Cli_Gui*](Cli_Gui.png)
+
 
 ### What is WSL
 
