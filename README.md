@@ -4,7 +4,7 @@ This repo contains the materials for Missing Workshop 26FA, hosted by TechGC.
 
 Original Author: Zhaojiacheng Zhou
 
-Modified by: Zihan Ma
+Modified by: Jie Tang; Zihan Ma
 
 This branch (`Mac`) is the macOS-only deck. The cross-platform version (Windows/Linux + WSL guide) lives on branch `26fa-update`.
 
