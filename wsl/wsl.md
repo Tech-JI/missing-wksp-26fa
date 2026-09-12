@@ -26,7 +26,7 @@ pandoc-latex-environment:
   importantblock: [important]
 ---
 
-# WSL&Vscode Install Guide
+# WSL Install Guide
 
 > This document is adapted from the original version by the 20th TechGC department.
 >
@@ -60,25 +60,26 @@ In this document, we\'re gonna go through the steps for installing Windows Subsy
 
 ### What is a CLI?
 
-**CLI** stands for **Command-Line Interface**.
+The majority of computer users work with **GUI**, or **Graphical User Interface**. This requires you to use mouse to navigate the UI, e.g. double-clicking on a folder to open it.
 
-A CLI is a way to interact with your computer by **typing commands** instead of clicking buttons and menus.
+In contrast, **CLI**, or **Command-Line Interface**, is a way to interact with your computer by **typing commands** instead of clicking buttons and menus. You can typically achieve the same or more with CLI.
 
-For example, in a graphical user interface (**GUI**), you may open a folder by clicking it with your mouse.
+For example, these are some CLI commands:
 
-In a CLI, you can achieve the same kind of task by typing a command.
-
-For example, in Windows PowerShell:
+In Windows PowerShell:
 
 ```pwsh {title="Windows PowerShell"}
 wsl --status
 ```
-or inside Ubuntu / WSL:
+Inside Ubuntu / WSL:
+
 ```pwsh {title="WSL"}
 sudo apt update
 ```
-![*Cli_Gui*](Cli_Gui.png)
 
+Here's a graph that might help you understand the difference between the two.
+
+![*Cli_Gui*](Cli_Gui.png)
 
 ### What is WSL
 
@@ -344,6 +345,7 @@ wsl -l -v
 ```
 
 If the installation succeeds, you should see Ubuntu listed and WSL version 2 enabled.
+
 ### None of these cases apply
 
 See troubleshooting.md for further information.
@@ -356,7 +358,7 @@ If you are checking web resources, it is highly recommended to go to professiona
 
 After setting up WSL, we recommend using **Visual Studio Code (VS Code)** as the editor for programming.
 
-In this workshop, **VS Code is installed on Windows**, while your source code, compiler, debugger, and other development tools run inside WSL.
+In this workshop, **VS Code is installed on Windows**, while your source code, compiler, debugger, and other development tools **run inside WSL**.
 
 ### Step 1: Install Visual Studio Code
 
@@ -366,7 +368,7 @@ Open **Windows PowerShell** and run:
 winget install -e --id Microsoft.VisualStudioCode
 ```
 
-Alternatively, you can download and install Visual Studio Code from its official website.
+Alternatively, you can download and install Visual Studio Code from [its official website](https://code.visualstudio.com/).
 
 After installation, close and reopen PowerShell.
 
@@ -388,19 +390,7 @@ This allows Windows to reload the updated `PATH`.
 
 Open Visual Studio Code.
 
-Go to the **Extensions** panel on the left sidebar, or press:
-
-```text
-Ctrl + Shift + X
-```
-
-Search for:
-
-```text
-WSL
-```
-
-Install the **WSL** extension provided by Microsoft.
+Go to the **Extensions** panel on the left sidebar, or press `Ctrl + Shift + X`. Then search for `WSL`, and Install the **WSL** extension provided by Microsoft.
 
 Alternatively, you can install it directly from Windows PowerShell:
 
@@ -536,7 +526,7 @@ hello.c
 
 and write:
 
-```c
+```c {title="C"}
 #include <stdio.h>
 
 int main(void) {
@@ -614,4 +604,5 @@ Hello, C!
 Congratulations! You now have a working C/C++ development environment using **VS Code + WSL + GCC**.
 
 ## Future Development
+
 If you want to learn more about how to code in vscode and writing markdown files, please look forward to our Vscode and Markdown Workshops held by Tech-GC~
