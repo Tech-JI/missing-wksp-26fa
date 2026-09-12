@@ -16,7 +16,7 @@ header-includes:
   - \AtBeginDocument{\addtokomafont{subsubsection}{\large}}
   - \AtBeginDocument{\addtokomafont{paragraph}{\normalsize}}
   - \AtBeginDocument{\captionsetup[figure]{justification=centering}}
-  - \AtBeginDocument{\lstset{language={}}}
+  #- \AtBeginDocument{\lstset{language={},keepspaces=true,columns=fullflexible}}
   - \usepackage{awesomebox}
 pandoc-latex-environment:
   noteblock: [note]
@@ -572,4 +572,4 @@ Hello, C!
 Congratulations! You now have a working C/C++ development environment using **VS Code + WSL + GCC**.
 
 ## Future Development
-If you want to learn more about how to code in vscode and writing markdown files, please look forward to our Vscode and Markdown Workshops held bu Tech-GC~
+If you want to learn more about how to code in vscode and writing markdown files, please look forward to our Vscode and Markdown Workshops held by Tech-GC~
