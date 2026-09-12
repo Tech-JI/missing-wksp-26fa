@@ -349,7 +349,7 @@ winget install -e --id Microsoft.VisualStudioCode
 ```
 
 ::: note
-If you find this step to be pretty time-consuming, press `Ctrl-C` to terminate the process and follow the steps at [CERNET mirrors](https://help.mirrors.cernet.edu.cn/ubuntu/) to setup a mirror for your Ubuntu distro.
+If you find this step to be pretty time-consuming, press `Ctrl-C` to terminate the process and follow the steps at [CERNET mirrors](https://help.mirrors.cernet.edu.cn/winget-source/) to setup a mirror for your winget.
 
 :::
 
