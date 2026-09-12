@@ -25,102 +25,22 @@
 	\end{itemize}
 \end{frame}
 
-
-\begin{frame}[fragile]{Examples}
-	\begin{itemize}
-		\item Windows: winget, scoop, chocolatey
-		\item Macos: homebrew, macport
-		\item Linux: pacman, apt, dnf ...
-	\end{itemize}
-\end{frame}
-
 \begin{frame}[fragile]{Mirror}
 	\begin{itemize}
 		\item The mirror/source config of package defines where your package manager fetch remote packages
-		\item It can be customized to improve download speed and availability
-		\item There are many good quality source like tsinghua, ustc...
-	\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]{Exercise: vscode installation}
-	\begin{itemize}
-		\item Windows users: use winget to install vscode
-		\item Macos users: download homebrew and install vscode
-		\item Linux users: you should now how to do so
+		\item Can be customized to improve download speed and availability
+		\item Many good quality sources include: Tsinghua TUNA, USTC, SJTUG...
 	\end{itemize}
 
-	You can install vscodium if you value your privacy since it is open source and no one will steal your data and code :)
+	This link from CERNET would give you configuration steps on pretty much everything they provide: \href{https://help.mirrors.cernet.edu.cn/}{CERNET mirrors guide}
 \end{frame}
 
-\begin{frame}[fragile]{Exercise: vscode installation (Windows)}
-	\begin{enumerate}
-		\item Check \href{https://mirrors.ustc.edu.cn/help/winget-source.html}{USTC Mirror} and change your source
-		\item Proof read winget \verb|--|help
-		\item Run the following command to install vscode
-	\end{enumerate}
-	\begin{minted}{bash}
-winget install --location <path-you-want-to-install> Microsoft.VisualStudioCode
-	\end{minted}
-		
-\end{frame}
+\begin{frame}{Try it out!}
 
-\begin{frame}[fragile]{Exercise: vscode installation (Macos)}
-	\begin{enumerate}
-		\item Download homebrew from \href{https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/}{tsinghua mirror}
-		\item Run the following script to install homebrew
-	\end{enumerate}
-	\begin{minted}{bash}
-xcode-select --install
-export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
-export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
-export HOMEBREW_INSTALL_FROM_API=1
-export HOMEBREW_API_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles/api"
-export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
-git clone --depth=1 https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/install.git brew-install
-/bin/bash brew-install/install.sh
-rm -rf brew-install
-	\end{minted}
-\end{frame}
+	In the WSL Install Guide, we provide commands for you to install VS Code through package managers.
 
-\begin{frame}[fragile]{Exercise: vscode installation (Macos)}
+	Follow the \textbf{VS Code Setup} section in \texttt{wsl.pdf} and try to use the commands!
 
-	For apple scilicon CPU user run following command
+	Note: For Ubuntu users, \textbf{snap} is \textbf{not recommended}
 
-	\begin{minted}{bash}
-test -r ~/.bash_profile && echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.bash_profile
-test -r ~/.zprofile && echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
-	\end{minted}
-
-\end{frame}
-
-\begin{frame}[fragile]{Exercise: vscode installation (Macos)}
-
-For long term substitution of mirror, run following command, also see \href{https://mirrors.tuna.tsinghua.edu.cn/help/homebrew-bottles/}{this website}
-
-	\begin{minted}{bash}
-export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
-for tap in core cask command-not-found; do
-brew tap --custom-remote "homebrew/${tap}" "https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-${tap}.git"
-done
-brew update
-	\end{minted}
-\end{frame}
-
-\begin{frame}[fragile]{Exercise: vscode installation (Macos)}
-\begin{itemize}
-	\item Proof read brew \verb|--|help
-	\item Run the following command to install vscode
-\end{itemize}
-
-	\begin{minted}{bash}
-brew install --cask visual-studio-code
-	\end{minted}
-
-\end{frame}
-
-\begin{frame}[fragile]{Exercise: vscode installation (Linux)}
-	\begin{enumerate}
-		\item Check \href{https://code.visualstudio.com/docs/setup/linux}{vscode official website} and download
-		\item For Ubuntu users, I don't recommend you to use snap
-	\end{enumerate}
 \end{frame}

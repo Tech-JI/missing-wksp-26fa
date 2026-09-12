@@ -1,3 +1,5 @@
 .DS_Store
 _minted-main
 build/
+_minted
+*.gz
